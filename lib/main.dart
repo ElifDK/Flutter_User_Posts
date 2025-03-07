@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:user_posts/model/Post.dart';
+import 'package:user_posts/model/post.dart';
+import 'package:user_posts/ui/post_card.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -48,7 +49,7 @@ class _ProfileState extends State<Profile> {
                 ),),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
+                children:  [
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                     child: Text('800',
@@ -65,9 +66,9 @@ class _ProfileState extends State<Profile> {
 
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
+                children:  [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                    padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                     child: Text('650',
                       style: TextStyle(
                         fontSize: 20,
@@ -90,7 +91,7 @@ class _ProfileState extends State<Profile> {
           Divider(height: 30,
               color:Colors.black),
           Column(
-            children: posts.map((post)=>Text(post.text)).toList(),
+            children: posts.map((post)=>PostCard(post:post)).toList(),
           )
         ],
       ),
