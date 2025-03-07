@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_posts/model/Post.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -16,7 +17,13 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
+  List<Post> posts = [
+    Post(text: 'Dart fun!', date: 'March 3', comments: 2, likes: 20),
+    Post(text: 'Loving flutter..', date: 'March 4', comments: 1, likes: 10),
+    Post(text: 'Waww!!!', date: 'March 5', comments: 0, likes: 4),
+  ];
   int postCount = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +89,9 @@ class _ProfileState extends State<Profile> {
           style: TextStyle(fontSize: 24),),
           Divider(height: 30,
               color:Colors.black),
+          Column(
+            children: posts.map((post)=>Text(post.text)).toList(),
+          )
         ],
       ),
 
@@ -95,3 +105,5 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
+
+
