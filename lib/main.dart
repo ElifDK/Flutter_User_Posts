@@ -25,6 +25,12 @@ class _ProfileState extends State<Profile> {
   ];
   int postCount = 0;
 
+  void deletePost (Post post) {
+    setState(() {
+      posts.remove(post);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +97,9 @@ class _ProfileState extends State<Profile> {
           Divider(height: 30,
               color:Colors.black),
           Column(
-            children: posts.map((post)=>PostCard(post:post)).toList(),
+            children: posts.map((post)=>PostCard(
+                post:post,
+            delete: () {deletePost(post);} ,)).toList(),
           )
         ],
       ),

@@ -4,7 +4,8 @@ import 'package:user_posts/model/post.dart';
 class PostCard extends StatelessWidget {
 
   final Post post;
-  const PostCard ({super.key, required this.post});
+  final VoidCallback delete;
+  const PostCard ({super.key, required this.post, required this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class PostCard extends StatelessWidget {
                 Text(post.comments.toString(),
                   style: TextStyle(fontSize: 14,
                       fontWeight: FontWeight.w300),),
-                IconButton(onPressed: (){}, icon: Icon(Icons.delete, size: 14, color:Colors.red))
+                IconButton(onPressed:delete, icon: Icon(Icons.delete, size: 14, color:Colors.red))
               ],
             )
 
