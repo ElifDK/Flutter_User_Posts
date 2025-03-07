@@ -7,9 +7,16 @@ void main() {
 }
 
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({super.key});
 
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+
+  int postCount = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,11 +77,20 @@ class Profile extends StatelessWidget {
             ],
           ),
           Divider(height: 30,
-              color:Colors.black)
+              color:Colors.black),
+          Text('$postCount',
+          style: TextStyle(fontSize: 24),),
+          Divider(height: 30,
+              color:Colors.black),
         ],
       ),
 
-      floatingActionButton: FloatingActionButton(onPressed: (){},
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            postCount++;
+          });
+        },
         child: Icon(Icons.add),),
     );
   }
